@@ -6,6 +6,6 @@ import groovy.transform.Immutable
 @Immutable
 @CompileStatic
 class Cocktail {
-	String name
-	String baseSpirit
+  String name
+  String baseSpirit
 }

@@ -14,24 +14,24 @@ import static com.google.common.base.CaseFormat.UPPER_UNDERSCORE
 @Use(StringStyleCategory)
 class DoublePipeWhereBlockSpec extends Specification {
 
-	@Unroll("converts '#string' to '#expected' using #style")
-	def "can convert case"() {
-		expect:
-		string.convert(style) == expected
+  @Unroll("converts '#string' to '#expected' using #style")
+  def "can convert case"() {
+    expect:
+    string.convert(style) == expected
 
-		where:
-		string        | style || expected
-		"foo bar baz" | CAMEL || "FooBarBaz"
-		"foo bar baz" | KEBAB || "foo-bar-baz"
-		"foo bar baz" | SNAKE || "foo_bar_baz"
-	}
+    where:
+    string        | style || expected
+    "foo bar baz" | CAMEL || "FooBarBaz"
+    "foo bar baz" | KEBAB || "foo-bar-baz"
+    "foo bar baz" | SNAKE || "foo_bar_baz"
+  }
 
 }
 
 @CompileStatic
 @Category(String)
 class StringStyleCategory {
-	String convert(CaseFormat style) {
-		UPPER_UNDERSCORE.to(style, this.toString().toUpperCase().replaceAll(/\s+/, "_"))
-	}
+  String convert(CaseFormat style) {
+    UPPER_UNDERSCORE.to(style, this.toString().toUpperCase().replaceAll(/\s+/, "_"))
+  }
 }

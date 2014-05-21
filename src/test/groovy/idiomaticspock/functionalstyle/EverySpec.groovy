@@ -1,23 +1,74 @@
 package idiomaticspock.functionalstyle
 
+import com.google.common.collect.ImmutableCollection
+import com.google.common.collect.ImmutableList
+import groovy.transform.CompileStatic
+import groovy.transform.Immutable
 import spock.lang.Specification
+import spock.lang.Subject
 
 class EverySpec extends Specification {
-	def "all strings are at least 3 characters long (bad)"() {
-		given:
-		def list = ["", "x", "xxx", "xxxxx"]*.padRight(3, "z")
+  @Subject
+  def cocktails = new CocktailFinder()
 
-		expect:
-		list[0].length() >= 3
-		list[1].length() >= 3
-		list[2].length() >= 3
-		list[3].length() >= 3
-	}
-	def "all strings are at least 3 characters long (good)"() {
-		given:
-		def list = ["", "x", "xxx", "xxxxx"]*.padRight(3, "z")
+  def setup() {
+    cocktails << new Cocktail("Old Fashioned", "Whiskey")
+    cocktails << new Cocktail("Martini", "Gin")
+    cocktails << new Cocktail("Aviation", "Gin")
+    cocktails << new Cocktail("Negroni", "Gin")
+    cocktails << new Cocktail("Boulevardier", "Whiskey")
+    cocktails << new Cocktail("Daiquiri", "Rum")
+  }
 
-		expect:
-		list.every { it.length() >= 3 }
-	}
+  def "can find cocktails by base spirit (v1)"() {
+    when:
+    def results = cocktails.findByBaseSpirit("Gin")
+
+    then:
+    results.size() == 3
+    results[0].baseSpirit == "Gin"
+    results[1].baseSpirit == "Gin"
+    results[2].baseSpirit == "Gin"
+  }
+
+  def "can find cocktails by base spirit (v2)"() {
+    when:
+    def results = cocktails.findByBaseSpirit("Gin")
+
+    then:
+    results.every {
+      it.baseSpirit == "Gin"
+    }
+  }
+
+  def "can find cocktails by base spirit (v3)"() {
+    when:
+    def results = cocktails.findByBaseSpirit("Gin")
+
+    then:
+    results.baseSpirit.every {
+      it == "Gin"
+    }
+  }
+}
+
+class CocktailFinder {
+  @Delegate
+  private final Collection<Cocktail> cocktails = []
+
+  Collection<Cocktail> findByBaseSpirit(String baseSpirit) {
+    ImmutableList.of(*cocktails)
+  }
+}
+
+@Immutable
+@CompileStatic
+class Cocktail {
+  String name
+  String baseSpirit
+
+  @Override
+  String toString() {
+    name
+  }
 }

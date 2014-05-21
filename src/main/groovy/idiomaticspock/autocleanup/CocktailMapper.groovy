@@ -8,8 +8,8 @@ import java.sql.ResultSet
 
 @CompileStatic
 class CocktailMapper implements ResultSetMapper<Cocktail> {
-	@Override
-	Cocktail map(int index, ResultSet r, StatementContext ctx) {
-		return new Cocktail(name: r.getString("name"), baseSpirit: r.getString("base_spirit"))
-	}
+  @Override
+  Cocktail map(int index, ResultSet r, StatementContext ctx) {
+    return new Cocktail(name: r.getString("name"), baseSpirit: r.getString("base_spirit"))
+  }
 }
