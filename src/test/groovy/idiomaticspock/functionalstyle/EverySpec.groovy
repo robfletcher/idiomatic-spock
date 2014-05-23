@@ -1,7 +1,5 @@
 package idiomaticspock.functionalstyle
 
-import com.google.common.collect.ImmutableCollection
-import com.google.common.collect.ImmutableList
 import groovy.transform.CompileStatic
 import groovy.transform.Immutable
 import spock.lang.Specification
@@ -49,26 +47,5 @@ class EverySpec extends Specification {
     results.baseSpirit.every {
       it == "Gin"
     }
-  }
-}
-
-class CocktailFinder {
-  @Delegate
-  private final Collection<Cocktail> cocktails = []
-
-  Collection<Cocktail> findByBaseSpirit(String baseSpirit) {
-    ImmutableList.of(*cocktails)
-  }
-}
-
-@Immutable
-@CompileStatic
-class Cocktail {
-  String name
-  String baseSpirit
-
-  @Override
-  String toString() {
-    name
   }
 }

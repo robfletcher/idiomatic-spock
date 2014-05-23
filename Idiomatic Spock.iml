@@ -23,6 +23,7 @@
     <orderEntry type="library" exported="" scope="RUNTIME" name="Gradle: h2-1.4.178" level="project" />
     <orderEntry type="library" exported="" name="Gradle: jdbi-2.53" level="project" />
     <orderEntry type="library" exported="" name="Gradle: annotations-2.0.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: rxjava-core-0.18.3" level="project" />
   </component>
 </module>
 
