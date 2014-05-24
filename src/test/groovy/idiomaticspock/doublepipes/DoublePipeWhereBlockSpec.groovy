@@ -28,10 +28,3 @@ class DoublePipeWhereBlockSpec extends Specification {
 
 }
 
-@CompileStatic
-@Category(String)
-class StringStyleCategory {
-  String convert(CaseFormat style) {
-    UPPER_UNDERSCORE.to(style, this.toString().toUpperCase().replaceAll(/\s+/, "_"))
-  }
-}

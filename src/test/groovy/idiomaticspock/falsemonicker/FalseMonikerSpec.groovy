@@ -28,21 +28,5 @@ class FalseMonikerSpec extends Specification {
   }
 }
 
-class CocktailFinder {
-  @Delegate private final List<Cocktail> cocktails = []
 
-  List<Cocktail> findByBaseSpiritNewestFirst(Spirit spirit) {
-    cocktails.sort { it.invented }
-  }
-}
 
-@TupleConstructor
-class Cocktail {
-  final String description
-  final Spirit baseSpirit
-  final int invented
-}
-
-enum Spirit {
-  WHISKEY, GIN, VODKA, RUM
-}
