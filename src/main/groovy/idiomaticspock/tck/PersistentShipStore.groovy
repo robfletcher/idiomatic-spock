@@ -8,29 +8,29 @@ import org.skife.jdbi.v2.sqlobject.SqlUpdate
 import org.skife.jdbi.v2.sqlobject.customizers.Mapper
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterContainerMapper
 
-interface PersistentCocktailStore extends CocktailStore {
-  @SqlUpdate("""create table cocktail (
+interface PersistentShipStore extends ShipStore {
+  @SqlUpdate("""create table ship (
                        id int primary key auto_increment,
 		                   name varchar(32),
-		                   base_spirit varchar(32))""")
+		                   allegiance varchar(32))""")
   void createTable()
 
-  @SqlUpdate("drop table cocktail")
+  @SqlUpdate("drop table ship")
   void dropTable()
 
-  @SqlUpdate("insert into cocktail (name, base_spirit) values (:name, :baseSpirit)")
+  @SqlUpdate("insert into ship (name, allegiance) values (:name, :allegiance)")
   @Override
-  void insert(@BindBean Cocktail cocktail)
+  void insert(@BindBean Ship ship)
 
-  @SqlQuery("select name, base_spirit from cocktail")
-  @Mapper(CocktailMapper)
+  @SqlQuery("select name, allegiance from ship")
+  @Mapper(ShipMapper)
   @RegisterContainerMapper(ImmutableCollectionContainerBuilderFactory)
   @Override
-  ImmutableCollection<Cocktail> list()
+  ImmutableCollection<Ship> list()
 
-  @SqlQuery("select name, base_spirit from cocktail where base_spirit = :baseSpirit")
-  @Mapper(CocktailMapper)
+  @SqlQuery("select name, allegiance from ship where allegiance = :allegiance")
+  @Mapper(ShipMapper)
   @RegisterContainerMapper(ImmutableCollectionContainerBuilderFactory)
   @Override
-  ImmutableCollection<Cocktail> findByBaseSpirit(@Bind("baseSpirit") String baseSpirit)
+  ImmutableCollection<Ship> findByAllegiance(@Bind("allegiance") String allegiance)
 }

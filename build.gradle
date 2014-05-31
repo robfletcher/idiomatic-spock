@@ -8,10 +8,9 @@ repositories {
 dependencies {
   compile "org.codehaus.groovy:groovy-all:2.3.2:indy"
   compile "com.google.guava:guava:17.0"
-	compile "org.jdbi:jdbi:2.53"
+  compile "org.jdbi:jdbi:2.53"
   compile "com.netflix.rxjava:rxjava-core:0.18.3"
-
-	runtime "com.h2database:h2:1.4.178"
+  compile "com.h2database:h2:1.4.178"
 
   testCompile("org.spockframework:spock-core:0.7-groovy-2.0") {
     exclude module: "groovy-all"
