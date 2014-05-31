@@ -1,7 +1,6 @@
 package idiomaticspock.autocleanup
 
 import org.skife.jdbi.v2.DBI
-import org.skife.jdbi.v2.Handle
 import spock.lang.AutoCleanup
 import spock.lang.Shared
 import spock.lang.Specification
@@ -9,33 +8,33 @@ import spock.lang.Subject
 
 class AutoCleanup3Spec extends Specification {
 
-  @Shared dbi = new DBI("jdbc:h2:mem:test")
-  @Shared @AutoCleanup Handle handle
-  @Shared @Subject @AutoCleanup("dropTable") CocktailStore cocktailStore
+  @Shared @AutoCleanup handle = DBI.open("jdbc:h2:mem:test")
+
+  @Shared
+  @AutoCleanup("dropTable")
+  @Subject ships = handle.attach(ShipStore)
 
   def setupSpec() {
-    handle = dbi.open()
-    cocktailStore = handle.attach(CocktailStore)
-    cocktailStore.createTable()
+    ships.createTable()
   }
 
-  def "can retrieve a list of cocktails"() {
+  def "can retrieve a list of ships"() {
     given:
-    def statement = handle.createStatement("insert into cocktail (name, base_spirit) values (?, ?)")
-    [Gin: ["Negroni", "Aviation"], Whiskey: ["Old Fashioned"]].each { baseSpirit, names ->
+    def statement = handle.createStatement("insert into ship (name, allegiance) values (?, ?)")
+    [Federation: ["Enterprise", "Constellation"], Klingon: ["M'Char"]].each { allegiance, names ->
       names.each { name ->
-        statement.bind(0, name).bind(1, baseSpirit).execute()
+        statement.bind(0, name).bind(1, allegiance).execute()
       }
     }
 
     when:
-    def cocktails = cocktailStore.listCocktails("Gin")
+    def ships = ships.findByAllegiance("Federation")
 
     then:
-    with(cocktails.toList()) {
+    with(ships.toList()) {
       size() == 2
-      baseSpirit.every { it == "Gin" }
-      name == ["Negroni", "Aviation"]
+      allegiance.every { it == "Federation" }
+      name == ["Enterprise", "Constellation"]
     }
   }
 }

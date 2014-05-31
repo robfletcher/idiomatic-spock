@@ -7,9 +7,9 @@ import org.skife.jdbi.v2.tweak.ResultSetMapper
 import java.sql.ResultSet
 
 @CompileStatic
-class CocktailMapper implements ResultSetMapper<Cocktail> {
+class ShipMapper implements ResultSetMapper<Ship> {
   @Override
-  Cocktail map(int index, ResultSet r, StatementContext ctx) {
-    return new Cocktail(name: r.getString("name"), baseSpirit: r.getString("base_spirit"))
+  Ship map(int index, ResultSet r, StatementContext ctx) {
+    return new Ship(name: r.getString("name"), allegiance: r.getString("allegiance"))
   }
 }
