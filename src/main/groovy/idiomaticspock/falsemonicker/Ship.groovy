@@ -3,9 +3,12 @@ package idiomaticspock.falsemonicker
 import groovy.transform.CompileStatic
 import groovy.transform.TupleConstructor
 
+import java.time.Year
+
+@CompileStatic
 @TupleConstructor
-class Cocktail {
-  final String description
-  final Spirit baseSpirit
-  final int invented
+class Ship {
+  final String name
+  final String allegiance
+  final Year enteredService
 }

@@ -10,8 +10,8 @@ import javax.script.ScriptEngineManager
 import static java.time.LocalDateTime.now
 
 class FriendlyDateSpec extends Specification {
-  @Shared def engine = new ScriptEngineManager().getEngineByName("nashorn")
-  @Shared @Subject def moment
+  @Shared engine = new ScriptEngineManager().getEngineByName("nashorn")
+  @Shared @Subject moment
 
   def setupSpec() {
     getClass().getResourceAsStream("/moment-with-langs.js").withReader { reader ->
