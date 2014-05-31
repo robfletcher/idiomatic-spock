@@ -5,9 +5,9 @@ import groovy.transform.Immutable
 
 @Immutable
 @CompileStatic
-class Cocktail {
+class Ship {
   String name
-  String baseSpirit
+  String allegiance
 
   @Override
   String toString() {
