@@ -1,14 +1,12 @@
 package idiomaticspock.nashorn
 
-import spock.lang.Shared
-import spock.lang.Specification
-import spock.lang.Subject
-import spock.lang.Unroll
+import spock.lang.*
 
 import javax.script.ScriptEngineManager
 
 import static java.time.LocalDateTime.now
 
+@IgnoreIf({ !new ScriptEngineManager().getEngineByName("nashorn") })
 class FriendlyDateSpec extends Specification {
   @Shared engine = new ScriptEngineManager().getEngineByName("nashorn")
   @Shared @Subject moment

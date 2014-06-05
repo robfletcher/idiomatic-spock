@@ -12,3 +12,4 @@
 ## Errors
 
 * `expect` block cannot go before `given` the way I showed it. But it can go before `where` so the technique is valid.
+* should assert collections are not empty when using `every`
