@@ -11,6 +11,9 @@ dependencies {
   compile "org.jdbi:jdbi:2.53"
   compile "com.netflix.rxjava:rxjava-core:0.18.3"
   compile "com.h2database:h2:1.4.178"
+  if (!JavaVersion.current().isJava8Compatible()) {
+    compile "org.threeten:threetenbp:0.9"
+  }
 
   testCompile("org.spockframework:spock-core:0.7-groovy-2.0") {
     exclude module: "groovy-all"

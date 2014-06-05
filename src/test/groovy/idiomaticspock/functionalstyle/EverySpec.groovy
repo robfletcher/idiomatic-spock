@@ -1,11 +1,13 @@
 package idiomaticspock.functionalstyle
 
+import idiomaticspock.starships.MemoryShipStore
+import idiomaticspock.starships.Ship
 import spock.lang.Specification
 import spock.lang.Subject
 
 class EverySpec extends Specification {
   @Subject
-  def ships = new ShipStore()
+  def ships = new MemoryShipStore()
 
   def setup() {
     ships << new Ship("Gr'oth", "Klingon")

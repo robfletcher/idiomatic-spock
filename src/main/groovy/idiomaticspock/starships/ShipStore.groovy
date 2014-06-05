@@ -1,4 +1,4 @@
-package idiomaticspock.tck
+package idiomaticspock.starships
 
 import com.google.common.collect.ImmutableCollection
 
@@ -8,4 +8,6 @@ interface ShipStore {
   ImmutableCollection<Ship> list()
 
   ImmutableCollection<Ship> findByAllegiance(String allegiance)
+
+  ImmutableCollection<Ship> findByAllegianceNewestFirst(Object allegiance)
 }

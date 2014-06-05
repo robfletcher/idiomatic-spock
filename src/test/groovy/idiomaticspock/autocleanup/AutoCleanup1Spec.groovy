@@ -1,5 +1,6 @@
 package idiomaticspock.autocleanup
 
+import idiomaticspock.starships.PersistentShipStore
 import org.skife.jdbi.v2.DBI
 import spock.lang.Specification
 import spock.lang.Subject
@@ -7,7 +8,7 @@ import spock.lang.Subject
 class AutoCleanup1Spec extends Specification {
 
   def handle = DBI.open("jdbc:h2:mem:test")
-  @Subject ships = handle.attach(ShipStore)
+  @Subject ships = handle.attach(PersistentShipStore)
 
   def setup() {
     ships.createTable()

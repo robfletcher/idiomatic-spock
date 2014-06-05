@@ -1,5 +1,6 @@
 package idiomaticspock.tck
 
+import idiomaticspock.starships.PersistentShipStore
 import org.skife.jdbi.v2.DBI
 import org.skife.jdbi.v2.Handle
 import spock.lang.AutoCleanup

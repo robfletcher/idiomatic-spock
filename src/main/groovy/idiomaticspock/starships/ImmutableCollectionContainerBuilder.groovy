@@ -1,4 +1,4 @@
-package idiomaticspock.tck
+package idiomaticspock.starships
 
 import com.google.common.collect.ImmutableCollection
 import com.google.common.collect.ImmutableSet

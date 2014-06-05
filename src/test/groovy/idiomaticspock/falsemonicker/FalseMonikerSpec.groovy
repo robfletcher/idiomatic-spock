@@ -1,5 +1,7 @@
 package idiomaticspock.falsemonicker
 
+import idiomaticspock.starships.MemoryShipStore
+import idiomaticspock.starships.Ship
 import spock.lang.Ignore
 import spock.lang.See
 import spock.lang.Specification
@@ -10,7 +12,7 @@ import java.time.Year
 @See("http://stateyourbizness.blogspot.com/2008/07/good-unit-testing-practice.html")
 class FalseMonikerSpec extends Specification {
 
-  @Subject def ships = new ShipStore()
+  @Subject def ships = new MemoryShipStore()
 
   def "can find ships by allegiance ordered by age v1"() {
     given:

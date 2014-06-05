@@ -1,4 +1,4 @@
-package idiomaticspock.tck
+package idiomaticspock.starships
 
 import com.google.common.collect.ImmutableCollection
 import groovy.transform.CompileStatic

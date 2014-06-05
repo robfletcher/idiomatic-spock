@@ -1,5 +1,6 @@
 package idiomaticspock.autocleanup
 
+import idiomaticspock.starships.PersistentShipStore
 import org.skife.jdbi.v2.DBI
 import spock.lang.AutoCleanup
 import spock.lang.Shared
@@ -12,7 +13,7 @@ class AutoCleanup3Spec extends Specification {
 
   @Shared
   @AutoCleanup("dropTable")
-  @Subject ships = handle.attach(ShipStore)
+  @Subject ships = handle.attach(PersistentShipStore)
 
   def setupSpec() {
     ships.createTable()

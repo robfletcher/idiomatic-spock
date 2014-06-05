@@ -1,7 +1,11 @@
 package idiomaticspock.tck
 
+import idiomaticspock.starships.Ship
+import idiomaticspock.starships.ShipStore
 import spock.lang.Specification
 import spock.lang.Subject
+
+import java.time.Year
 
 abstract class ShipStoreSpec<T extends ShipStore> extends Specification {
 
@@ -9,7 +13,7 @@ abstract class ShipStoreSpec<T extends ShipStore> extends Specification {
 
   def "can insert a new ship"() {
     when:
-    ships.insert(new Ship("Enterprise", "Federation"))
+    ships.insert(new Ship("Enterprise", "Federation", Year.of(2245)))
 
     then:
     ships.list().size() == old(ships.list().size()) + 1
