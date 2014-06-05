@@ -8,6 +8,7 @@
 ## Questions
 
 * Can you access the mocking API from a trait?
+  * Appears not but a better approach would be to define an abstract factory method in the trait and implement it to return a mock/stub in the spec
 
 ## Errors
 
