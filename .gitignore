@@ -2,6 +2,7 @@
 /build/
 
 /.idea/
+*.iml
 
 /.gradletasknamecache
 
