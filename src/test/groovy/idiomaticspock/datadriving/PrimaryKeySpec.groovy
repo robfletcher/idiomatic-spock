@@ -1,13 +1,12 @@
 package idiomaticspock.datadriving
 
-import org.skife.jdbi.v2.DBI
-import org.skife.jdbi.v2.Handle
+import java.sql.Connection
 import spock.lang.AutoCleanup
 import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Unroll
-
-import java.sql.Connection
+import org.skife.jdbi.v2.DBI
+import org.skife.jdbi.v2.Handle
 
 class PrimaryKeySpec extends Specification {
   @Shared @AutoCleanup Handle handle
@@ -30,7 +29,7 @@ class PrimaryKeySpec extends Specification {
   }
 
   @Unroll
-  void "the #table table has a primary key"() {
+  def "the #table table has a primary key"() {
     expect:
     with(handle.connection) { Connection connection ->
       connection.metaData.getPrimaryKeys(null, null, table).next()
