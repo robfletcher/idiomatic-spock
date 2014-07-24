@@ -6,7 +6,7 @@ repositories {
 }
 
 dependencies {
-  compile "org.codehaus.groovy:groovy-all:2.3.2:indy"
+  compile "org.codehaus.groovy:groovy-all:2.3.4:indy"
   compile "com.google.guava:guava:17.0"
   compile "org.jdbi:jdbi:2.53"
   compile "com.netflix.rxjava:rxjava-core:0.18.3"
@@ -18,6 +18,10 @@ dependencies {
   testCompile("org.spockframework:spock-core:0.7-groovy-2.0") {
     exclude module: "groovy-all"
   }
+}
+
+tasks.withType(GroovyCompile) {
+  groovyOptions.optimizationOptions.indy = true
 }
 
 defaultTasks "check"
