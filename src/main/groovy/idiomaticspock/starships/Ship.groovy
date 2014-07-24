@@ -1,10 +1,11 @@
 package idiomaticspock.starships
 
-import groovy.transform.CompileStatic
-
 import java.time.Year
+import groovy.transform.CompileStatic
+import groovy.transform.EqualsAndHashCode
 
 @CompileStatic
+@EqualsAndHashCode
 class Ship {
   final String name
   final String allegiance
