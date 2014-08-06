@@ -14,6 +14,9 @@ class RunOnSpec extends Specification {
     then:
     stack.pop() == "foo"
 
+    expect:
+    stack.empty()
+
     when:
     stack.pop()
 

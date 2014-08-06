@@ -30,4 +30,12 @@ class StackSpec extends Specification {
     expect:
     stack.empty()
   }
+
+  def "trying to pop again raises an error"() {
+    when:
+    stack.pop()
+
+    then:
+    thrown EmptyStackException
+  }
 }

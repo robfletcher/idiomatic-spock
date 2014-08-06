@@ -6,7 +6,7 @@ repositories {
 }
 
 dependencies {
-  compile "org.codehaus.groovy:groovy-all:2.3.4:indy"
+  compile "org.codehaus.groovy:groovy-all:2.3.6:indy"
   compile "com.google.guava:guava:17.0"
   compile "org.jdbi:jdbi:2.53"
   compile "com.netflix.rxjava:rxjava-core:0.18.3"
@@ -25,3 +25,9 @@ tasks.withType(GroovyCompile) {
 }
 
 defaultTasks "check"
+
+test {
+  testLogging {
+    events "passed", "skipped", "failed", "standardOut", "standardError"
+  }
+}
